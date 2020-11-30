@@ -44,7 +44,7 @@ header a {
 }
 
 a:hover {
-  color: orange;
+  color:#f0c040;
 }
 
 main {
@@ -78,7 +78,7 @@ footer {
 .products {
   display: flex;
   flex-wrap: wrap;
-  justify-content: ;
+  justify-content: center;
   align-items: center;
   margin: 0;
   padding: 0;
@@ -132,4 +132,16 @@ footer {
 
 .button.primary {
   background-color: #f0c040;
+}
+
+.filter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: .1rem solid lightgray;
+}
+.filter div{
+  flex:1;
 }

@@ -1,5 +1,6 @@
 //feature 1
-import React,{useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import Filter from './components/filter';
 import Products from './components/products';
 import data from "./data.json";
 
@@ -8,7 +9,46 @@ function App() {
 
   const [products, setProducts] = useState(data.products);
   const [size, setSize] = useState("");
-  const [sort, setSort] = useState('')
+  const [sort, setSort] = useState('');
+
+
+
+  const filterSort = (sort) => {
+    setSort(sort);
+    let sortArray = products.slice().sort((a, b) =>
+      sort === 'lowest'
+      ? a.price > b.price
+        ? 1
+        : -1
+      : sort === 'highest'
+        ? a.price < b.price
+          ? 1
+          : -1
+        : a.id < b.id
+          ?1
+          :-1);
+    setProducts(sortArray);
+  }
+
+  const filterSize = (size) => {
+    console.log(size);
+    if (size === "") {
+      setProducts(data.products);
+      setSize(size);
+    } else {
+      let filteredProducts = data.products.filter(product => product.availableSize.includes(size));
+
+      setProducts(filteredProducts);
+      setSize(size);
+    }
+  }
+
+  // useEffect(() => {
+  //   let filteredProducts=products.filter(product=>product.availableSize.includes(size));
+  //   setCount(filteredProducts.length)
+  // }, [size])
+
+
 
   return (
     <div className='grid-container'>
@@ -16,11 +56,22 @@ function App() {
       <header>
         <a href='/'>React Shopping Cart</a>
       </header>
-      
+
       <main>
         <div className='content'>
           <div className="main">
-            <Products products={products} />
+            <Filter
+              count={products.length}
+              size={size}
+              sort={sort}
+              filterSize={filterSize}
+              filterSort={filterSort}
+            />
+            <Products
+              products={products}
+              size={size}
+              sort={sort}
+            />
           </div>
           <div className="sidebar">Cart items</div>
         </div>
