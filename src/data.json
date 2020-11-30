@@ -1,0 +1,69 @@
+
+{
+  "products":[
+    {
+      "id":"dress1",
+      "title":"Dress 1's title",
+      "image":"./images/dress1.jpeg",
+      "description":"about dress 1 is ladies wearable dress",
+      "price":20,
+      "availableSize":["XL","XXL"]
+    },
+    {
+      "id":"dress2",
+      "title":"Dress 2's title",
+      "image":"/images/dress1.jpeg",
+      "description":"about dress 2 is ladies wearable dress",
+      "price":25,
+      "availableSize":["XL","XXL","S","L"]
+    },
+    {
+      "id":"dress3",
+      "title":"Dress 3's title",
+      "image":"/images/dress1.jpeg",
+      "description":"about dress 3 is ladies wearable dress",
+      "price":20,
+      "availableSize":["XL","XXL","M","L"]
+    },
+    {
+      "id":"dress4",
+      "title":"Dress 4's title",
+      "image":"/images/dress1.jpeg",
+      "description":"about dress 4 is ladies wearable dress",
+      "price":20,
+      "availableSize":["XL","XXL","M"]
+    },
+    {
+      "id":"dress5",
+      "title":"Dress 5's title",
+      "image":"/images/dress1.jpeg",
+      "description":"about dress 5 is ladies wearable dress",
+      "price":20,
+      "availableSize":["M","L","S"]
+    },
+    {
+      "id":"dress6",
+      "title":"Dress 6's title",
+      "image":"/images/dress1.jpeg",
+      "description":"about dress 6 is ladies wearable dress",
+      "price":20,
+      "availableSize":["S"]
+    },
+    {
+      "id":"dress7",
+      "title":"Dress 7's title",
+      "image":"/images/dress1.jpeg",
+      "description":"about dress 7 is ladies wearable dress",
+      "price":20,
+      "availableSize":["S"]
+    },
+    {
+      "id":"dress8",
+      "title":"Dress 8's title",
+      "image":"/images/dress1.jpeg",
+      "description":"about dress 8 is ladies wearable dress",
+      "price":20,
+      "availableSize":["S"]
+    }
+  ]
+}
