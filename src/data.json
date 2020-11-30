@@ -22,7 +22,7 @@
       "title":"Dress 3's title",
       "image":"/images/dress1.jpeg",
       "description":"about dress 3 is ladies wearable dress",
-      "price":20,
+      "price":10,
       "availableSize":["XL","XXL","M","L"]
     },
     {
@@ -30,7 +30,7 @@
       "title":"Dress 4's title",
       "image":"/images/dress1.jpeg",
       "description":"about dress 4 is ladies wearable dress",
-      "price":20,
+      "price":15,
       "availableSize":["XL","XXL","M"]
     },
     {
@@ -38,7 +38,7 @@
       "title":"Dress 5's title",
       "image":"/images/dress1.jpeg",
       "description":"about dress 5 is ladies wearable dress",
-      "price":20,
+      "price":40,
       "availableSize":["M","L","S"]
     },
     {
@@ -46,7 +46,7 @@
       "title":"Dress 6's title",
       "image":"/images/dress1.jpeg",
       "description":"about dress 6 is ladies wearable dress",
-      "price":20,
+      "price":9,
       "availableSize":["S"]
     },
     {
@@ -54,7 +54,7 @@
       "title":"Dress 7's title",
       "image":"/images/dress1.jpeg",
       "description":"about dress 7 is ladies wearable dress",
-      "price":20,
+      "price":33,
       "availableSize":["S"]
     },
     {
@@ -62,7 +62,7 @@
       "title":"Dress 8's title",
       "image":"/images/dress1.jpeg",
       "description":"about dress 8 is ladies wearable dress",
-      "price":20,
+      "price":17,
       "availableSize":["S"]
     }
   ]

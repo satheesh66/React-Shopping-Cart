@@ -1,9 +1,10 @@
 import React from 'react';
 import handlePrice from '../util';
 
+let filteredProducts;
 export default function Products(props) {
 
-  const { products } = props;
+  const { products, size, sort } = props;
 
   return (
     <div>
@@ -18,22 +19,22 @@ export default function Products(props) {
                     alt={product.title}
                     style={{ width: '350px' }}
                   />
-                  <a href={'#' + product.id}>
+                  <a href={'#' + product.id} visited='false'>
                     <p>{product.title}</p>
                   </a>
                   <div className="product-price">
-                    <div>{ handlePrice(product.price)}</div>
+                    <div>{handlePrice(product.price)}</div>
                     <button
                       className="button primary"
                     >
                       Add to Cart
-                  </button>
+                    </button>
                   </div>
                 </div>
               </li>
+
             );
-          }
-          )
+          })
         }
       </ul>
     </div>
