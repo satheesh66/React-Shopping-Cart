@@ -22,7 +22,7 @@ textarea {
   display: grid;
   height: 100%;
   grid-template-areas: 'header' 'main' 'footer';
-  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-rows: 7rem 1fr 5rem;
   grid-template-columns: 1fr;
 }
 a{
@@ -143,5 +143,54 @@ footer {
   border-bottom: .1rem solid lightgray;
 }
 .filter div{
+  flex:1;
+}
+
+
+/* cart items */
+
+.cart{
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+}
+.cart-items{
+  padding:0;
+  width: 100%;
+  list-style-type: none;
+}
+
+.cart-items li{
+  display: flex;
+}
+.cart-items img{
+  width: 5rem;
+}
+.cart-items li div{
+  padding: .5rem;
+}
+.cart-items li div:last-child{
+  flex: 1;
+}
+.right{
+  text-align: right;
+}
+
+.cart-header{
+  border-bottom: 0.1rem #c0c0c0 solid;
+}
+
+.total{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.total>div{
+  font-size: 2rem;
+}
+
+.total>div,
+.total>button{
   flex:1;
 }

@@ -4,7 +4,7 @@ import handlePrice from '../util';
 let filteredProducts;
 export default function Products(props) {
 
-  const { products, size, sort } = props;
+  const { products, size, sort,addToCart} = props;
 
   return (
     <div>
@@ -26,6 +26,7 @@ export default function Products(props) {
                     <div>{handlePrice(product.price)}</div>
                     <button
                       className="button primary"
+                      onClick={()=>addToCart(product)}
                     >
                       Add to Cart
                     </button>
