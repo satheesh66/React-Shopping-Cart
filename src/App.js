@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Filter from './components/filter';
 import Products from './components/products';
 import data from "./data.json";
+import Cart from './components/cart';
 
 
 function App() {
@@ -10,23 +11,46 @@ function App() {
   const [products, setProducts] = useState(data.products);
   const [size, setSize] = useState("");
   const [sort, setSort] = useState('');
+  const [cartItems, setCartItems] = useState([])
 
 
+  const addToCart = (product) => {
+    console.log('cart Items inside addtocart:',cartItems);
+    const tempCartItems = cartItems.slice();
+    console.log('tempCartItems:', tempCartItems);
+    let alreadyInCart = false;
+    tempCartItems.forEach((item) => {
+      if (item.id === product.id) {
+        item.count++;
+        alreadyInCart = true;
+      }
+    });
+    if (!alreadyInCart) {
+      tempCartItems.push({ ...product, count: 1 });
+    }
+    setCartItems(tempCartItems);
+  }
+
+  const removeFromCart=(index)=>{
+    const tempCartItems=cartItems.slice();
+    tempCartItems.splice(index,1);
+    setCartItems(tempCartItems);
+  }
 
   const filterSort = (sort) => {
     setSort(sort);
     let sortArray = products.slice().sort((a, b) =>
       sort === 'lowest'
-      ? a.price > b.price
-        ? 1
-        : -1
-      : sort === 'highest'
-        ? a.price < b.price
+        ? a.price > b.price
           ? 1
           : -1
-        : a.id < b.id
-          ?1
-          :-1);
+        : sort === 'highest'
+          ? a.price < b.price
+            ? 1
+            : -1
+          : a.id < b.id
+            ? 1
+            : -1);
     setProducts(sortArray);
   }
 
@@ -43,10 +67,7 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   let filteredProducts=products.filter(product=>product.availableSize.includes(size));
-  //   setCount(filteredProducts.length)
-  // }, [size])
+
 
 
 
@@ -71,9 +92,14 @@ function App() {
               products={products}
               size={size}
               sort={sort}
+              addToCart={addToCart}
             />
           </div>
-          <div className="sidebar">Cart items</div>
+          <div className="sidebar">
+            <Cart cartItems={cartItems}
+              removeFromCart={removeFromCart}
+            />
+          </div>
         </div>
       </main>
 
