@@ -11,11 +11,11 @@ function App() {
   const [products, setProducts] = useState(data.products);
   const [size, setSize] = useState("");
   const [sort, setSort] = useState('');
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
 
 
   const addToCart = (product) => {
-    console.log('cart Items inside addtocart:',cartItems);
+    console.log('cart Items inside addtocart:', cartItems);
     const tempCartItems = cartItems.slice();
     console.log('tempCartItems:', tempCartItems);
     let alreadyInCart = false;
@@ -29,12 +29,14 @@ function App() {
       tempCartItems.push({ ...product, count: 1 });
     }
     setCartItems(tempCartItems);
+    localStorage.setItem('cartItems', JSON.stringify(tempCartItems));
   }
 
-  const removeFromCart=(index)=>{
-    const tempCartItems=cartItems.slice();
-    tempCartItems.splice(index,1);
+  const removeFromCart = (index) => {
+    const tempCartItems = cartItems.slice();
+    tempCartItems.splice(index, 1);
     setCartItems(tempCartItems);
+    localStorage.setItem('cartItems', JSON.stringify(tempCartItems));
   }
 
   const filterSort = (sort) => {
@@ -61,10 +63,14 @@ function App() {
       setSize(size);
     } else {
       let filteredProducts = data.products.filter(product => product.availableSize.includes(size));
-
       setProducts(filteredProducts);
       setSize(size);
     }
+  }
+
+  const createOrder=(orderData)=>{
+    console.log('inide app',orderData);
+    alert('Need the ordre is ',orderData)
   }
 
 
@@ -98,6 +104,7 @@ function App() {
           <div className="sidebar">
             <Cart cartItems={cartItems}
               removeFromCart={removeFromCart}
+              createOrder={createOrder}
             />
           </div>
         </div>

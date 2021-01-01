@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import handlePrice from '../util';
 
 export default function Cart(props) {
 
-  const { cartItems, removeFromCart } = props;
+  const { cartItems, removeFromCart,createOrder } = props;
 
-  console.log('inside cart Items:', props);
+  const [showCheckoutForm, setShowCheckoutForm] = useState(false);
+  const [checkoutInputData, setCheckoutInputData] = useState({
+    name: '',
+    email: '',
+    address: ''
+  });
+
+
+
+  const handleCheckoutData = (e) => {
+    setCheckoutInputData({
+      ...checkoutInputData,
+      [e.target.name]: e.target.value
+    });
+  }
+
+  const handleOrderData=(e)=>{
+    e.preventDefault();
+    const order={
+      ...checkoutInputData,
+      cartItems
+    }
+    console.log('order data is :',order);
+    createOrder(order);
+  }
+
 
   return (
     <div>
@@ -35,22 +60,61 @@ export default function Cart(props) {
         </ul>
       </div>
       {
-        cartItems.length!==0
+        cartItems.length !== 0
           ?
           <div className="cart">
             <div className="total">
-              <div>
-                Total:{' '}
-                {
-                  handlePrice(
-                    cartItems.reduce((acc, cur) => acc = acc + cur.price * cur.count, 0)
-                  )
-                }
-              </div>
-              <button className='button primary'>Proceed</button>
+              <div />
+              <button
+                className='button primary'
+                onClick={() => setShowCheckoutForm(true)}
+              >Proceed</button>
             </div>
           </div>
           : null
+      }
+      {
+        showCheckoutForm
+        && <div className='cart'>
+          <form onSubmit={handleOrderData}>
+            <ul className="form-container">
+              <li>
+                <label>Email</label>
+                <input
+                  value={checkoutInputData.email}
+                  name='email'
+                  type="email"
+                  required
+                  onChange={(e) => handleCheckoutData(e)}
+                />
+              </li>
+              <li>
+                <label>Name</label>
+                <input
+                  value={checkoutInputData.name}
+                  name='name'
+                  type="text"
+                  required
+                  onChange={(e) => handleCheckoutData(e)}
+                />
+              </li>
+              <li>
+                <label>Address</label>
+                <input
+                  value={checkoutInputData.address}
+                  name='address'
+                  type="text"
+                  required
+                  onChange={(e) => handleCheckoutData(e)}
+                />
+              </li>
+              <li>
+                <button className='button primary' type='submit'>Checkout</button>
+              </li>
+            </ul>
+          </form>
+        </div>
+
       }
 
     </div>
