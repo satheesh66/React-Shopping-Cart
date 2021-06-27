@@ -1,19 +1,19 @@
-import React from 'react'
+import React from "react";
 
 export default function Filter(props) {
-
-  const { count, filterSort, filterSize, size, sort } = props;
+  const { count, filterSort, filterSize, size, sort } =
+    props;
 
   return (
     <div className="filter">
       <div className="filter-result">
-        {count + ' '} Products
+        {count + " "} Products
       </div>
       <div className="filter-sort">
-        Order{' '}
+        Order{" "}
         <select
           value={sort}
-          onChange={e => filterSort(e.target.value)}
+          onChange={(e) => filterSort(e.target.value)}
         >
           <option value="">Latest</option>
           <option value="lowest">Lowest</option>
@@ -21,10 +21,10 @@ export default function Filter(props) {
         </select>
       </div>
       <div className="filter-size">
-        Filter{' '}
+        Filter{" "}
         <select
           value={size}
-          onChange={e=>filterSize(e.target.value)}
+          onChange={(e) => filterSize(e.target.value)}
         >
           <option value="">All</option>
           <option value="XS">XS</option>
@@ -35,7 +35,6 @@ export default function Filter(props) {
           <option value="XXL">XXL</option>
         </select>
       </div>
-
     </div>
-  )
+  );
 }

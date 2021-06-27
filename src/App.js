@@ -1,23 +1,22 @@
 //feature 1
-import React, { useState, useEffect } from 'react';
-import Filter from './components/filter';
-import Products from './components/products';
-import data from "./data.json";
-import Cart from './components/cart';
-
+import React, { useState, useEffect } from "react";
+import Filter from "./components/filter";
+import Products from "./components/products";
+import data from "./mockData.json";
+import Cart from "./components/cart";
 
 function App() {
-
   const [products, setProducts] = useState(data.products);
   const [size, setSize] = useState("");
-  const [sort, setSort] = useState('');
-  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
-
+  const [sort, setSort] = useState("");
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems")) || []
+  );
 
   const addToCart = (product) => {
-    console.log('cart Items inside addtocart:', cartItems);
+    console.log("cart Items inside addtocart:", cartItems);
     const tempCartItems = cartItems.slice();
-    console.log('tempCartItems:', tempCartItems);
+    console.log("tempCartItems:", tempCartItems);
     let alreadyInCart = false;
     tempCartItems.forEach((item) => {
       if (item.id === product.id) {
@@ -29,32 +28,41 @@ function App() {
       tempCartItems.push({ ...product, count: 1 });
     }
     setCartItems(tempCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(tempCartItems));
-  }
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(tempCartItems)
+    );
+  };
 
   const removeFromCart = (index) => {
     const tempCartItems = cartItems.slice();
     tempCartItems.splice(index, 1);
     setCartItems(tempCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(tempCartItems));
-  }
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(tempCartItems)
+    );
+  };
 
   const filterSort = (sort) => {
     setSort(sort);
-    let sortArray = products.slice().sort((a, b) =>
-      sort === 'lowest'
-        ? a.price > b.price
-          ? 1
-          : -1
-        : sort === 'highest'
+    let sortArray = products
+      .slice()
+      .sort((a, b) =>
+        sort === "lowest"
+          ? a.price > b.price
+            ? 1
+            : -1
+          : sort === "highest"
           ? a.price < b.price
             ? 1
             : -1
           : a.id < b.id
-            ? 1
-            : -1);
+          ? 1
+          : -1
+      );
     setProducts(sortArray);
-  }
+  };
 
   const filterSize = (size) => {
     console.log(size);
@@ -62,30 +70,27 @@ function App() {
       setProducts(data.products);
       setSize(size);
     } else {
-      let filteredProducts = data.products.filter(product => product.availableSize.includes(size));
+      let filteredProducts = data.products.filter(
+        (product) => product.availableSize.includes(size)
+      );
       setProducts(filteredProducts);
       setSize(size);
     }
-  }
+  };
 
-  const createOrder=(orderData)=>{
-    console.log('inide app',orderData);
-    alert('Need the ordre is ',orderData)
-  }
-
-
-
-
+  const createOrder = (orderData) => {
+    console.log("inide app", orderData);
+    alert("Need the ordre is ", orderData);
+  };
 
   return (
-    <div className='grid-container'>
-
+    <div className="grid-container">
       <header>
-        <a href='/'>React Shopping Cart</a>
+        <a href="/">React Shopping Cart</a>
       </header>
 
       <main>
-        <div className='content'>
+        <div className="content">
           <div className="main">
             <Filter
               count={products.length}
@@ -102,7 +107,8 @@ function App() {
             />
           </div>
           <div className="sidebar">
-            <Cart cartItems={cartItems}
+            <Cart
+              cartItems={cartItems}
               removeFromCart={removeFromCart}
               createOrder={createOrder}
             />
@@ -110,9 +116,7 @@ function App() {
         </div>
       </main>
 
-      <footer>
-        All rights reserved
-      </footer>
+      <footer>All rights reserved</footer>
     </div>
   );
 }
