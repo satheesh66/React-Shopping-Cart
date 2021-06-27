@@ -15,3 +15,7 @@ and display the numbet of products in currunt view port
 #4.Animation added
 
 #5.Server created crud using express and mongodb
+
+- to start server npm run server
+- to db compile mongod
+- to client npm run start
