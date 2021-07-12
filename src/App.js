@@ -4,9 +4,21 @@ import Filter from "./components/filter";
 import Products from "./components/products";
 import data from "./mockData.json";
 import Cart from "./components/cart";
+import { ProductsStore } from "./store/index.js";
 
 function App() {
   const [products, setProducts] = useState(data.products);
+  // const { products: productsList } = ProductsStore(
+  //   (state) => state
+  // );
+  // const [products, setProducts] = useState(productsList);
+
+  // useState(() => {
+  //   setProducts(productsList);
+  // }, [productsList]);
+
+  // console.log("app com products", productsList, products);
+
   const [size, setSize] = useState("");
   const [sort, setSort] = useState("");
   const [cartItems, setCartItems] = useState(

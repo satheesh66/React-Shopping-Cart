@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import handlePrice from "../util";
 import Slide from "react-reveal/Slide";
 import Modal from "react-modal";
 import Zoom from "react-reveal/Zoom";
+import { ProductsStore } from "../store";
 
 let filteredProducts;
 export default function Products(props) {
+  const { setProducts } = ProductsStore();
   const { products, size, sort, addToCart } = props;
 
   const [product, setProduct] = useState(null);
+
+  // useEffect(() => {
+  //   fetch("/api/products", { method: "GET" })
+  //     .then(async (res) => {
+  //       let result = await res.json();
+  //       // console.log("api result", result);
+  //       // console.log("api res", res);
+
+  //       setProducts(result);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   const openModal = (product) => {
     console.log("product is", product);
